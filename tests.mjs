@@ -1,5 +1,5 @@
 import assert from "assert";
-import { getAge, getAgeGroup } from "./index.mjs";
+import { getAge, getAgeGroup, getAgeForPerson } from "./index.mjs";
 
 describe("age calculator", () => {
   it("someone born 1972 is 50 2022", () => {
@@ -342,5 +342,80 @@ describe("loops does things over and over", () => {
 
     // arrange
     assert.equal(lowNumbers.length, 3);
+  });
+});
+
+describe("object are for building things", () => {
+  it("our first object - a human", () => {
+    // act
+    const person = {
+      name: "Marcus",
+      birthYear: 1972,
+      isTeacher: true,
+    };
+
+    // assert
+    assert.equal(person.name, "Marcus");
+    assert.equal(person.birthYear, 1972);
+    assert.equal(person.isTeacher, true);
+  });
+
+  it("get age for person", () => {
+    // arrange
+    const currentYear = 2022;
+    const person = {
+      name: "Marcus",
+      birthYear: 1972,
+      isTeacher: true,
+    };
+
+    // act
+    const age = getAgeForPerson(person, currentYear);
+
+    // assert
+    assert.equal(age, 50);
+  });
+
+  it("a person has a list of favorite movies", () => {
+    // act
+    const person = {
+      name: "Marcus",
+      favoriteMovies: ["Star Wars IV", "Star Wars V", "Star Wars IX"],
+    };
+
+    // assert
+    assert.equal(person.favoriteMovies.length, 3);
+    assert.equal(person.favoriteMovies[0], "Star Wars IV");
+    assert.equal(person.favoriteMovies[1], "Star Wars V");
+    assert.equal(
+      person.favoriteMovies[person.favoriteMovies.length - 1],
+      "Star Wars IX"
+    );
+  });
+
+  it("a person has a list of favorite movies with releaseYears", () => {
+    // act
+    const person = {
+      name: "Marcus",
+      favoriteMovies: [
+        {
+          title: "Star Wars IV",
+          releaseYear: 1977,
+        },
+        {
+          title: "Star Wars V",
+          releaseYear: 1980,
+        },
+        {
+          title: "Star Wars IX",
+          releaseYear: 2017,
+        },
+      ],
+    };
+
+    // assert
+    assert.equal(person.favoriteMovies.length, 3);
+    assert.equal(person.favoriteMovies[0].title, "Star Wars IV");
+    assert.equal(person.favoriteMovies[2].releaseYear, 2017);
   });
 });
