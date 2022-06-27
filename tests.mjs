@@ -1,5 +1,5 @@
 import assert from "assert";
-import { getAge, getAgeGroup, getAgeForPerson } from "./index.mjs";
+import { getAge, getAgeGroup, getAgeForPerson, divide } from "./index.mjs";
 
 describe("age calculator", () => {
   it("someone born 1972 is 50 2022", () => {
@@ -417,5 +417,34 @@ describe("object are for building things", () => {
     assert.equal(person.favoriteMovies.length, 3);
     assert.equal(person.favoriteMovies[0].title, "Star Wars IV");
     assert.equal(person.favoriteMovies[2].releaseYear, 2017);
+  });
+});
+
+describe("division", () => {
+  it("4 divided with 2 is 2", () => {
+    // act
+    const result = divide(4, 2);
+
+    // assert
+    assert.equal(result, 2);
+  });
+
+  it("4 divided with 0 should throw error", () => {
+    // arrange
+    try {
+      // act
+      const result = divide(4, 0);
+    } catch (error) {
+      // assert
+      assert.notEqual(error, undefined);
+      assert.equal(
+        error.message,
+        "Please... No division by zero... I cannot cope with that. /Your computer"
+      );
+    }
+  });
+
+  it.skip("throwing an error in a test will...", () => {
+    throw new Error("Reports as failing test");
   });
 });

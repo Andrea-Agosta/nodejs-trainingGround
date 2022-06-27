@@ -21,3 +21,12 @@ export const getAgeGroup = (age) => {
 // this is not necessary, function created only for exsercise (can use directily getAge)
 export const getAgeForPerson = (person, currentYear) =>
   getAge(person.birthYear, currentYear);
+
+export const divide = (number1, number2) => {
+  if (number2 === 0) {
+    throw new Error(
+      "Please... No division by zero... I cannot cope with that. /Your computer"
+    );
+  }
+  return number1 / number2;
+};
