@@ -30,3 +30,8 @@ export const divide = (number1, number2) => {
   }
   return number1 / number2;
 };
+
+export const addWithLog = (number1, number2, logger) => {
+  logger(`About to '${number1} + ${number2}'`);
+  return number1 + number2;
+};
